@@ -1,10 +1,3 @@
-
-// Закрытие модального окна
-function closeModal() {
-    document.getElementById('login-modal').style.display = 'none';
-}
-
-
 // Генерация звезд на экране
 function createStars() {
     const starContainer = document.querySelector('.stars-container');
@@ -21,12 +14,48 @@ function createStars() {
 
 createStars();  // Вызов функции для создания звезд
 
-function downloadVersion1() {
-    var fileId = '10I5BrY-DxGzqoAUjUHN0KO6lLfdxZ5EQ';  // ID файла на Google Drive
+// Функция для скачивания DE3NAKE Tweaker
+function downloadTweaker() {
+    var fileId = 'ID_тут';  // ID файла на Google Drive для Tweaker
     var downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
     
     var a = document.createElement('a');
     a.href = downloadUrl;
     a.target = '_blank'; // Это откроет ссылку в новой вкладке
     a.click(); // Эмулируем клик по ссылке
+}
+
+// Функция для скачивания DE3NAKE Optimization Pack
+function downloadPack() {
+    var fileId = 'ID_тут';  // ID файла на Google Drive для Optimization Pack
+    var downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+    
+    var a = document.createElement('a');
+    a.href = downloadUrl;
+    a.target = '_blank'; // Это откроет ссылку в новой вкладке
+    a.click(); // Эмулируем клик по ссылке
+}
+
+// Функция для переключения между секциями
+function showSection(section) {
+    // Скрываем все секции
+    const tweakerSection = document.getElementById('tweaker');
+    const packSection = document.getElementById('pack');
+    
+    // Кнопки для переключения
+    const tweakerBtn = document.getElementById('tweakerBtn');
+    const packBtn = document.getElementById('packBtn');
+
+    // Обновление видимости секций
+    if (section === 'tweaker') {
+        tweakerSection.style.display = 'block';
+        packSection.style.display = 'none';
+        tweakerBtn.classList.add('active');
+        packBtn.classList.remove('active');
+    } else if (section === 'pack') {
+        tweakerSection.style.display = 'none';
+        packSection.style.display = 'block';
+        tweakerBtn.classList.remove('active');
+        packBtn.classList.add('active');
+    }
 }

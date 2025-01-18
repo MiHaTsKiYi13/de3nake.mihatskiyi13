@@ -9,62 +9,116 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: url('https://source.unsplash.com/1600x900/?space,stars') no-repeat center center fixed;
             background-size: cover;
             color: #ffffff;
+            overflow: hidden;
+        }
+
+        /* Верхняя панель */
+        .top-panel {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Логотип в левой части панели */
+        .top-panel img {
+            height: 40px;  /* Высота картинки */
+            margin-right: 20px;  /* Отступ справа */
+        }
+
+        .top-panel .nav-arrow {
+            font-size: 2.2em;
+            cursor: pointer;
+            margin: 0 25px;
+            color: #ffffff;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .top-panel .nav-arrow:hover {
+            color: #00b0ff;
+            transform: scale(1.15);
+        }
+
+        .top-panel span {
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: font-size 0.3s ease, color 0.3s ease;
+        }
+
+        .top-panel span:hover {
+            color: #00b0ff;
+            font-size: 1.4em;
         }
 
         .container {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             background: rgba(0, 0, 0, 0.8);
             border-radius: 15px;
-            margin: 50px auto;
+            margin: 120px auto 50px;
             width: 80%;
-            max-width: 600px;
+            max-width: 700px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            transform: scale(0.98);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1);
         }
 
         h1, h2, p {
-            margin: 10px 0;
+            margin: 15px 0;
+            font-size: 1.5em;
         }
 
         .links a {
             display: block;
             color: #1da1f2;
             text-decoration: none;
-            margin: 5px 0;
+            margin: 8px 0;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
         }
 
         .links a:hover {
-            text-decoration: underline;
-        }
-
-        ul {
-            text-align: left;
-            margin: 10px 0 20px;
-        }
-
-        li {
-            margin-bottom: 5px;
+            color: #00b0ff;
         }
 
         .download-btn {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 15px 30px;
             background-color: #238636;
             color: #ffffff;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             text-decoration: none;
+            font-size: 1.2em;
             cursor: pointer;
-            margin: 10px;
-            transition: background-color 0.3s ease;
-            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .download-btn:hover {
             background-color: #2ea043;
+            transform: translateY(-4px);
+        }
+
+        .download-btn.active {
+            background-color: #1da1f2;
         }
 
         .stars-container {
@@ -83,7 +137,7 @@
             height: 2px;
             background: #ffffff;
             border-radius: 50%;
-            animation: twinkle 3s infinite ease-in-out;
+            animation: twinkle 2s infinite ease-in-out;
         }
 
         @keyframes twinkle {
@@ -95,11 +149,10 @@
             }
         }
 
-        /* Модальные окна */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 2;
             left: 0;
             top: 0;
             width: 100%;
@@ -110,63 +163,41 @@
         }
 
         .modal-content {
-            background-color: #333;
+            background-color: rgba(51, 51, 51, 0.9);
             color: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%;
+            padding: 30px;
+            border-radius: 20px;
+            width: 70%;
             max-width: 900px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        .modal-content h2 {
-            margin-bottom: 20px;
-        }
-
-        .modal-content p {
-            margin-bottom: 15px;
-        }
-
-        .modal-content button {
-            padding: 12px 25px;
-            background-color: #2ea043;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin: 15px;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        .modal-content button:hover {
-            background-color: rgb(246, 7, 7);
+        .modal-content:hover {
+            transform: scale(1.02);
         }
 
         .modal.active {
             display: flex;
+            opacity: 1;
         }
 
         .version-container {
             display: flex;
-            justify-content: space-between;
-            width: 100%;
+            justify-content: space-evenly;
             margin-top: 20px;
+            gap: 30px;
         }
 
         .version-box {
-            width: 45%;
             background-color: #444;
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 15px;
+            padding: 25px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            transition: transform 0.3s ease;
+            width: 45%;
         }
 
         .version-box:hover {
@@ -174,11 +205,18 @@
         }
 
         .version-box h3 {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
         }
 
         .version-box p {
-            margin-bottom: 15px;
+            font-size: 1em;
+            color: #ccc;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-align: center;
+            font-weight: normal;
         }
 
         .version-box button {
@@ -187,10 +225,10 @@
             color: white;
             border: none;
             cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 25px;
+            font-size: 1.1em;
             transition: background-color 0.3s ease;
-            margin-top: 20px;
+            margin-bottom: 10px;
         }
 
         .version-box button:hover {
@@ -199,31 +237,60 @@
 
         .close-btn {
             background-color: #f44336;
-            font-size: 18px; /* Размер крестика */
-            padding: 10px 20px;
+            font-size: 18px;
+            padding: 12px 20px;
             margin-top: 20px;
-            border-radius: 50%; /* Кнопка станет круглой */
+            border-radius: 50%;
             color: white;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            width: 40px; /* Ширина кнопки */
-            height: 40px; /* Высота кнопки */
-            text-align: center;
-            justify-content: center; /* Центрирование по горизонтали */
-            align-items: center; /* Центрирование по вертикали */
-            line-height: 18px; /* Центрирование крестика */
+            width: 50px;
+            height: 50px;
         }
 
         .close-btn:hover {
             background-color: #e53935;
         }
+
+        .section-btn {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background-color: #3a3a3a;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            margin: 10px 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .section-btn:hover {
+            background-color: #5e5e5e;
+            transform: translateY(-4px);
+        }
+
+        .section-btn.active {
+            background-color: #238636;
+        }
     </style>
 </head>
 <body>
-    <div class="stars-container"></div> <!-- Контейнер для звезд -->
+</div>
+</div>
 
-    <div class="container">
+</script>
+</body>
+    <div class="top-panel">
+        
+        <img src="icon.jpg" alt="Icon"> <!-- Картинка слева -->
+        <span id="pageTitle">DE3NAKE Tweaker</span>
+        <span class="nav-arrow" onclick="switchToTweaker()">&#8592;</span>
+        <span class="nav-arrow" onclick="switchToOptimizationPack()">&#8594;</span>
+    </div>
+
+
+    <div class="container" id="tweakerContainer">
         <h1>DE3NAKE Tweaker</h1>
         <p>Автор: MiHaTsKiYi</p>
         <p>Идея: DE3NAKE</p>
@@ -232,83 +299,98 @@
             <a href="https://t.me/mihatskiyi" target="_blank">Telegram: Mihatskiyi</a>
             <a href="https://github.com/MiHaTsKiYi13" target="_blank">GitHub: MiHaTsKiYi13</a>
         </div>
-        
         <p>Скачайте и используйте твикер для оптимизации вашего ПК!</p>
-        
-        <!-- Кнопка скачать -->
-        <button class="download-btn" onclick="openModal()">Скачать</button>
+        <button class="download-btn" id="downloadBtn" onclick="showVersionSelection()">Скачать</button>
     </div>
 
-    <!-- Модальное окно для выбора версии -->
-    <div id="versionModal" class="modal">
+    <div class="container" id="optimizationContainer" style="display: none;">
+        <h1>DE3NAKE Optimization Pack</h1>
+        <p>Автор: MiHaTsKiYi & DE3NAKE</p>
+        <p>Идея: DE3NAKE</p>
+        <div class="links">
+            <a href="https://t.me/DE3NAKE" target="_blank">Telegram: DE3NAKE</a>
+            <a href="https://t.me/mihatskiyi" target="_blank">Telegram: Mihatskiyi</a>
+            <a href="https://github.com/MiHaTsKiYi13" target="_blank">GitHub: MiHaTsKiYi13</a>
+        </div>
+        <p>Оптимизируйте ваш ПК с помощью дополнительных функций!</p>
+        <button class="download-btn" id="downloadPackBtn" onclick="downloadPack()">Скачать</button>
+    </div>
+
+    <div class="modal" id="versionModal">
         <div class="modal-content">
-            <h2>Выберите версию для скачивания</h2>
+            <h2>Выберите версию</h2>
             <div class="version-container">
-                <!-- Версия 1 (слева) -->
                 <div class="version-box">
                     <h3>Версия 1</h3>
-                    <p>Скачайте первую версию с улучшенной стабильностью.</p>
-                    <button onclick="downloadVersion(1)">Скачать Версию 1</button>
+                    <p>Выполнен в стиле OneClick, требуется Windows 10. Больше оптимизации, чем в версии 2, так как в Windows 10 можно отключить почти всё, что угодно. Нууу, Почти :)</p>
+                    <button onclick="downloadVersion('v1')">Скачать</button>
                 </div>
-                <!-- Версия 2 (справа) -->
                 <div class="version-box">
                     <h3>Версия 2</h3>
-                    <p>Скачайте вторую версию с дополнительными функциями.</p>
-                    <button onclick="downloadVersion(2)">Скачать Версию 2</button>
+                    <p>Выполнен в стиле обычного твикера с главным меню. Можно выбрать, что конкретно оптимизировать. Добавлен сценарий для регулярной очистки системы.</p>
+                    <button onclick="downloadVersion('v2')">Скачать</button>
+                </div>
+                <div class="version-box">
+                    <h3>Версия 3</h3>
+                    <p>Обновленный твикер с улучшенной стабильностью и поддержкой дополнительных функций. Нужна Windows 11 для максимальной производительности.</p>
+                    <button onclick="downloadVersion('v3')">Скачать</button>
                 </div>
             </div>
-            
-      <!-- Контейнер для звезд -->
-      <div class="stars-container"></div>
-
-            <!-- Кнопка для закрытия, выравненная по центру -->
-            <div class="close-btn-container">
-                <button onclick="closeModal()" class="close-btn">✖</button>
-            </div>
+            <button class="close-btn" onclick="closeModal()">×</button>
         </div>
     </div>
 
+    
+   
+
     <script>
-        // Генерация звезд на экране
-        function createStars() {
-            const starContainer = document.querySelector('.stars-container');
-            for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                star.style.top = `${Math.random() * 100}vh`;
-                star.style.left = `${Math.random() * 100}vw`;
-                star.style.animationDuration = `${Math.random() * 2 + 1}s`;
-                star.style.animationDelay = `${Math.random() * 3}s`;
-                starContainer.appendChild(star);
-            }
+        // Переключение между Tweaker и Optimization Pack
+        function switchToTweaker() {
+            document.getElementById('tweakerContainer').style.display = 'block';
+            document.getElementById('optimizationContainer').style.display = 'none';
+            document.getElementById('pageTitle').textContent = 'DE3NAKE Tweaker';
         }
-    
-        createStars(); // Вызов функции для создания звезд
-    
-        // Открытие модального окна выбора версии
-        function openModal() {
+
+        function switchToOptimizationPack() {
+            document.getElementById('optimizationContainer').style.display = 'block';
+            document.getElementById('tweakerContainer').style.display = 'none';
+            document.getElementById('pageTitle').textContent = 'DE3NAKE Optimization Pack';
+        }
+
+        // Показ модального окна выбора версии
+        function showVersionSelection() {
             document.getElementById('versionModal').classList.add('active');
         }
-    
+
         // Закрытие модального окна
         function closeModal() {
             document.getElementById('versionModal').classList.remove('active');
         }
-    
-        // Скачивание выбранной версии
+
+        // Скачивание определенной версии
         function downloadVersion(version) {
-            let downloadUrl;
-            if (version === 1) {
-                downloadUrl = 'https://disk.yandex.ru/d/ZuKkgpax1IEWLA'; // Ссылка для версии 1
-            } else if (version === 2) {
-                downloadUrl = 'https://disk.yandex.ru/d/5l8GtAng2O-tgA'; // Ссылка для версии 2
+            let downloadLink = '';
+            switch (version) {
+                case 'v1':
+                    downloadLink = 'https://disk.yandex.ru/d/ZuKkgpax1IEWLA';
+                    break;
+                case 'v2':
+                    downloadLink = 'https://disk.yandex.ru/d/5l8GtAng2O-tgA?pane=file-info';
+                    break;
+                case 'v3':
+                    downloadLink = 'https://disk.yandex.ru/d/UbjayFixt0u5gg';
+                    break;
             }
-            
-            const a = document.createElement('a');
-            a.href = downloadUrl;
-            a.target = '_blank';
-            a.click();
-            closeModal(); // Закрытие модального окна после выбора
+            if (downloadLink) {
+                window.open(downloadLink, '_blank');
+            }
         }
+
+// Скачивание Optimization Pack
+function downloadPack() {
+    alert('Скоро будет доступно!');
+}
+
     </script>
-    
+</body>
+</html>
