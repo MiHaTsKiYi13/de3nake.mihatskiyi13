@@ -8,6 +8,7 @@
     <link rel="icon" href="icon.jpg" type="image/jpg">
     <style>
         body {
+            
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: url('https://source.unsplash.com/1600x900/?space,stars') no-repeat center center fixed;
@@ -18,7 +19,7 @@
 
         /* Верхняя панель */
         .top-panel {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.256);
             padding: 10px;
             text-align: center;
             font-size: 1.2em;
@@ -65,7 +66,7 @@
         .container {
             text-align: center;
             padding: 30px;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.668);
             border-radius: 15px;
             margin: 120px auto 50px;
             width: 80%;
@@ -157,13 +158,13 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.692);
             justify-content: center;
             align-items: center;
         }
 
         .modal-content {
-            background-color: rgba(51, 51, 51, 0.9);
+            background-color: rgba(51, 51, 51, 0.756);
             color: white;
             padding: 30px;
             border-radius: 20px;
@@ -183,6 +184,12 @@
             opacity: 1;
         }
 
+        /* Анимация исчезновения */
+        .version-box.fade-out {
+            opacity: 0;
+            visibility: hidden; /* Скрыть элемент после исчезновения */
+        }
+
         .version-container {
             display: flex;
             justify-content: space-evenly;
@@ -191,27 +198,30 @@
         }
 
         .version-box {
-            background-color: #444;
+            background-color: rgba(35, 35, 35, 0.463); /* Темный полупрозрачный фон */
             border-radius: 15px;
             padding: 25px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Легкая тень */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             width: 45%;
         }
 
         .version-box:hover {
             transform: scale(1.05);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.697); /* Более заметная тень при наведении */
         }
 
         .version-box h3 {
             margin-bottom: 15px;
             font-size: 1.3em;
+            color: #ffffff; /* Белый цвет текста */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.588); /* Легкая тень для заголовка */
         }
 
         .version-box p {
             font-size: 1em;
-            color: #ccc;
+            color: #d1d1d168; /* Светло-серый текст */
             margin-top: 10px;
             margin-bottom: 20px;
             line-height: 1.6;
@@ -221,18 +231,19 @@
 
         .version-box button {
             padding: 12px 25px;
-            background-color: #238636;
+            background-color: #238636; /* Зеленая кнопка */
             color: white;
             border: none;
             cursor: pointer;
             border-radius: 25px;
             font-size: 1.1em;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
             margin-bottom: 10px;
         }
 
         .version-box button:hover {
-            background-color: #2ea043;
+            background-color: #2ea043; /* Ярче зеленая при наведении */
+            transform: translateY(-2px); /* Легкий эффект поднятия при наведении */
         }
 
         .close-btn {
@@ -277,61 +288,75 @@
 </head>
 <body>
 </div>
-</div>
 
 </script>
 </body>
+
+
     <div class="top-panel">
         
-        <img src="icon.jpg" alt="Icon"> <!-- Картинка слева -->
+        <!-- Контейнер для звезд -->
+<div class="stars-container" id="stars-container"></div>
+        
+<img id="pageIcon" src="icon.jpg" alt="Icon"> <!-- Картинка слева -->
         <span id="pageTitle">DE3NAKE Tweaker</span>
         <span class="nav-arrow" onclick="switchToTweaker()">&#8592;</span>
         <span class="nav-arrow" onclick="switchToOptimizationPack()">&#8594;</span>
     </div>
-
+    
 
     <div class="container" id="tweakerContainer">
         <h1>DE3NAKE Tweaker</h1>
         <p>Автор: MiHaTsKiYi</p>
         <p>Идея: DE3NAKE</p>
-        <div class="links">
-            <a href="https://t.me/DE3NAKE" target="_blank">Telegram: DE3NAKE</a>
-            <a href="https://t.me/mihatskiyi" target="_blank">Telegram: Mihatskiyi</a>
-            <a href="https://github.com/MiHaTsKiYi13" target="_blank">GitHub: MiHaTsKiYi13</a>
-        </div>
-        <p>Скачайте и используйте твикер для оптимизации вашего ПК!</p>
+        <p>Этот инструмент поможет вам улучшить производительность и настроить систему под ваши потребности, обеспечивая стабильную работу и эффективное использование ресурсов.</p>
+        <p>Скачайте и используйте твикер DE3NAKE для оптимизации вашего ПК! 
+            <p></p>
         <button class="download-btn" id="downloadBtn" onclick="showVersionSelection()">Скачать</button>
+        <a href="https://disk.yandex.ru/d/1JrKQiOBy4UbFQ" target="_blank">
+            <span class="download-btn-linux">Для Linux</span>
+        </a>
+        
+        </a>
     </div>
+    
+    
 
     <div class="container" id="optimizationContainer" style="display: none;">
         <h1>Пак со всеми исправлениями</h1>
         <p>Автор: MiHaTsKiYi & DE3NAKE</p>
         <p>Идея: DE3NAKE</p>
         <div class="links">
-            <a href="https://t.me/DE3NAKE" target="_blank">Telegram: DE3NAKE</a>
-            <a href="https://t.me/mihatskiyi" target="_blank">Telegram: Mihatskiyi</a>
-            <a href="https://github.com/MiHaTsKiYi13" target="_blank">GitHub: MiHaTsKiYi13</a>
         </div>
-        <p>Используйте пак если у вас что то поломалось</p>
+        <p>Данный пак содержит множество исправлений.</p>
+        <p>Используйте пак исключительно, если у вас что-то поломалось.</p>  
         <button class="download-btn" id="downloadPackBtn" onclick="downloadPack()">Скачать</button>
     </div>
+
+    <div class="links-container">
+        <a href="https://t.me/DE3NAKE" target="_blank">Telegram: DE3NAKE</a>
+        <a href="https://t.me/mihatskiyi" target="_blank">Telegram: Mihatskiyi</a>
+        <a href="https://github.com/MiHaTsKiYi13" target="_blank">GitHub: MiHaTsKiYi</a>
+    </div>
+   
+
 
     <div class="modal" id="versionModal">
         <div class="modal-content">
             <h2>Выберите версию</h2>
             <div class="version-container">
                 <div class="version-box">
-                    <h3>Версия 1</h3>
+                    <h3>V1</h3>
                     <p>Выполнен в стиле OneClick, требуется Windows 10. Больше оптимизации, чем в версии 2, так как в Windows 10 можно отключить почти всё, что угодно. Нууу, Почти :)</p>
                     <button onclick="downloadVersion('v1')">Скачать</button>
                 </div>
                 <div class="version-box">
-                    <h3>Версия 2</h3>
+                    <h3>V2</h3>
                     <p>Выполнен в стиле обычного твикера с главным меню. Можно выбрать, что конкретно оптимизировать. Добавлен сценарий для регулярной очистки системы.</p>
                     <button onclick="downloadVersion('v2')">Скачать</button>
                 </div>
                 <div class="version-box">
-                    <h3>Версия 3</h3>
+                    <h3>V3</h3>
                     <p>Обновленный твикер с улучшенной стабильностью и поддержкой дополнительных функций. Нужна Windows 11 для максимальной производительности.</p>
                     <button onclick="downloadVersion('v3')">Скачать</button>
                 </div>
@@ -344,18 +369,40 @@
    
 
     <script>
-        // Переключение между Tweaker и Optimization Pack
-        function switchToTweaker() {
-            document.getElementById('tweakerContainer').style.display = 'block';
-            document.getElementById('optimizationContainer').style.display = 'none';
-            document.getElementById('pageTitle').textContent = 'DE3NAKE Tweaker';
+            // Функция для генерации звезд
+    function generateStars() {
+        const starsContainer = document.getElementById('stars-container');
+        const numberOfStars = 100; // Количество звезд
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            // Рандомизация позиции и размера звезды
+            star.style.top = `${Math.random() * 100}vh`;
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.animationDuration = `${Math.random() * 2 + 1}s`; // случайная продолжительность анимации
+            star.style.animationDelay = `${Math.random() * 3}s`; // случайная задержка анимации
+            starsContainer.appendChild(star);
         }
+    }
 
-        function switchToOptimizationPack() {
-            document.getElementById('optimizationContainer').style.display = 'block';
-            document.getElementById('tweakerContainer').style.display = 'none';
-            document.getElementById('pageTitle').textContent = 'Пак со всеми исправлениями';
-        }
+    // Вызов функции для генерации звезд
+    generateStars();
+
+// Переключение между Tweaker и Optimization Pack
+function switchToTweaker() {
+    document.getElementById('pageIcon').src = 'icon.jpg'; // Меняем изображение для Tweaker
+    document.getElementById('tweakerContainer').style.display = 'block';
+    document.getElementById('optimizationContainer').style.display = 'none';
+    document.getElementById('pageTitle').textContent = 'DE3NAKE Tweaker';
+}
+
+function switchToOptimizationPack() {
+    document.getElementById('pageIcon').src = 'icon.jpg'; // Меняем изображение для Optimization Pack
+    document.getElementById('optimizationContainer').style.display = 'block';
+    document.getElementById('tweakerContainer').style.display = 'none';
+    document.getElementById('pageTitle').textContent = 'Пак со всеми исправлениями';
+}
+
 
         // Показ модального окна выбора версии
         function showVersionSelection() {
@@ -386,9 +433,9 @@
             }
         }
 
-        // Скачивание Optimization Pack
+        // Скачивание пак с исправлениями 
         function downloadPack() {
-            window.location.href = "https://disk.yandex.ru/d/lfBxxQsKvlww3A";  // Ссылка на файл
+            window.open('https://disk.yandex.ru/d/lfBxxQsKvlww3A', '_blank');
         }
     </script>
 </head>

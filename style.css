@@ -21,6 +21,50 @@ body {
 }
 
 
+/* Контейнер для ссылок */
+.links-container {
+    position: fixed;  /* Позиционируем относительно окна */
+    bottom: 20px;     /* Отступ снизу */
+    right: 20px;      /* Отступ справа */
+    background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон */
+    padding: 15px;    /* Отступы внутри контейнера */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Тень для контейнера */
+    z-index: 1000; /* Размещение поверх других элементов */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* Стиль для текста версии */
+.version-text {
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    margin-left: 20px;
+}
+
+.version-text:hover {
+    text-decoration: underline;
+}
+
+
+#pageIcon {
+    background-color: transparent;  /* Обеспечиваем, чтобы фона не было */
+}
+
+.links-container a {
+    color: #1da1f2;  /* Цвет ссылок */
+    text-decoration: none; /* Убираем подчеркивание */
+    display: block; /* Каждая ссылка на новой строке */
+    margin-bottom: 10px; /* Отступы между ссылками */
+    font-size: 1.1em; /* Размер шрифта */
+    transition: color 0.3s ease, transform 0.3s ease; /* Плавные изменения цвета и размера */
+}
+
+.links-container a:hover {
+    color: #00b0ff; /* Цвет при наведении */
+    transform: scale(1.1); /* Увеличение размера ссылки при наведении */
+}
 
 .close-btn {
     padding: 12px 25px;
@@ -418,60 +462,279 @@ footer p {
     background-color: rgba(0, 0, 255, 0.7);
 }
 
-/* Стили для карточек с информацией */
-.card {
-    background-color: rgba(50, 50, 50, 0.9);
+/* Стиль для модального окна */
+.modal {
+    display: none; /* Окно скрыто по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Полупрозрачный темный фон */
+    z-index: 1001; /* Поверх всех элементов */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out; /* Плавное появление */
+}
+
+/* Анимация для появления окна */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Стиль контента модального окна */
+.modal-content {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)); /* Градиент для фона */
+    border-radius: 20px;
+    padding: 40px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Легкая подсветка */
+    color: #fff; /* Белый цвет текста */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Текст заголовка */
+h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #00ccff; /* Светло-голубой для космической атмосферы */
+    margin-bottom: 30px;
+}
+
+/* Стили для контейнера версий */
+.version-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Стиль для каждого блока версии */
+.version-box {
+    background: rgba(0, 0, 0, 0.7); /* Тёмный фон */
+    border-radius: 15px;
     padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 25%;
+    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3); /* Неоновая подсветка */
+    transition: transform 0.3s ease; /* Плавная анимация при наведении */
+    color: #fff;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+.version-box:hover {
+    transform: translateY(-10px); /* Эффект при наведении */
+    box-shadow: 0 8px 20px rgba(0, 255, 255, 0.6); /* Усиленная подсветка при наведении */
 }
 
-.card h3 {
-    font-size: 1.5rem;
-    color: #ffffff;
+.version-box h3 {
+    font-size: 22px;
+    color: #00ccff;
+    margin-bottom: 10px;
 }
 
-.card p {
-    font-size: 1rem;
-    color: #bbbbbb;
-}
-
-.card button {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    font-size: 1rem;
-    border-radius: 5px;
+/* Стиль для кнопки "Скачать" */
+button {
+    background-color: #00ccff; /* Цвет кнопки */
     border: none;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
-.card button:hover {
-    background-color: #0056b3;
+button:hover {
+    background-color: #0099cc; /* Цвет кнопки при наведении */
 }
 
-html, body {
+/* Кнопка закрытия */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg); /* Поворот кнопки при наведении */
+}
+
+/* Добавим звездный фон для модального окна */
+.modal:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    margin: 0;
+    background: url('https://www.w3schools.com/w3images/stars.jpg') repeat center center fixed;
+    opacity: 0.4;
+    z-index: -1;
 }
 
-body {
-    background-image: url('space.jpg');
+/* Стиль для модального окна */
+.modal {
+    display: none; /* Окно скрыто по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Полупрозрачный темный фон */
+    z-index: 1001; /* Поверх всех элементов */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out; /* Плавное появление */
+}
+
+/* Анимация для появления окна */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Стиль контента модального окна */
+.modal-content {
+    background: rgba(32, 32, 64, 0.8); /* Полупрозрачный фон с темным оттенком */
+    background-image: url('https://yourimagepath.com/space-background.jpg'); /* Замените на фиолетовый космос */
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    border-radius: 20px;
+    padding: 40px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Легкая подсветка */
+    color: #fff; /* Белый цвет текста */
+    text-align: center;
     position: relative;
-    animation: none; /* Убираем анимацию, если она есть */
-    background-attachment: fixed; /* Это заставит фон оставаться неподвижным при прокрутке */
+    overflow: hidden;
+    backdrop-filter: blur(10px); /* Размытие фона для большей прозрачности */
 }
+
+/* Текст заголовка */
+h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #00ccff; /* Светло-голубой для космической атмосферы */
+    margin-bottom: 30px;
+}
+
+/* Стили для контейнера версий */
+.version-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Стиль для каждого блока версии */
+.version-box {
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+    border-radius: 15px;
+    padding: 20px;
+    width: 25%;
+    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3); /* Легкая подсветка */
+    transition: transform 0.3s ease; /* Плавная анимация при наведении */
+    color: #fff;
+}
+
+.version-box:hover {
+    transform: translateY(-10px); /* Эффект при наведении */
+    box-shadow: 0 8px 20px rgba(0, 255, 255, 0.6); /* Усиленная подсветка при наведении */
+}
+
+.version-box h3 {
+    font-size: 22px;
+    color: #00ccff; /* Светлый цвет для заголовков */
+    margin-bottom: 10px;
+}
+
+/* Стиль для кнопки "Скачать" */
+button {
+    background-color: #00ccff; /* Цвет кнопки */
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0099cc; /* Цвет кнопки при наведении */
+}
+
+/* Кнопка закрытия */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg); /* Поворот кнопки при наведении */
+}
+
+/* Звездный фон для модального окна */
+.modal:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://yourimagepath.com/space-stars.jpg') repeat center center fixed; /* Фоновое изображение звездного неба */
+    opacity: 0.6; /* Полупрозрачный эффект */
+    z-index: -1;
+}
+
+
+.download-btn-linux {
+    background: none; /* Без фона */
+    color: #007bff; /* Цвет, как у ссылки */
+    border: none; /* Без рамки */
+    padding: 0; /* Без отступов */
+    font-size: 16px; /* Размер шрифта */
+    text-decoration: none; /* Без подчеркивания */
+    cursor: pointer; /* Курсор как у ссылки */
+    margin-top: 10px; /* Отступ сверху, чтобы было пространство между кнопками */
+    display: block; /* Важное изменение: делает элемент блочным, чтобы располагался под кнопкой */
+}
+
+
+
 
 body::before {
     content: "";
@@ -486,3 +749,4 @@ body::before {
     z-index: -1; /* Чтобы фон был на заднем плане */
     animation: none; /* Останавливаем анимацию, если она была */
 }
+

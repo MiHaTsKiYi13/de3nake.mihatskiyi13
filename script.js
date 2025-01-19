@@ -25,16 +25,6 @@ function downloadTweaker() {
     a.click(); // Эмулируем клик по ссылке
 }
 
-// Функция для скачивания DE3NAKE Optimization Pack
-function downloadPack() {
-    var fileId = 'ID_тут';  // ID файла на Google Drive для Optimization Pack
-    var downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
-    
-    var a = document.createElement('a');
-    a.href = downloadUrl;
-    a.target = '_blank'; // Это откроет ссылку в новой вкладке
-    a.click(); // Эмулируем клик по ссылке
-}
 
 // Функция для переключения между секциями
 function showSection(section) {
@@ -58,4 +48,7 @@ function showSection(section) {
         tweakerBtn.classList.remove('active');
         packBtn.classList.add('active');
     }
+    
 }
+
+
