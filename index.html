@@ -8,10 +8,9 @@
     <link rel="icon" href="icon.jpg" type="image/jpg">
     <style>
         body {
-            
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: url('https://source.unsplash.com/1600x900/?space,stars') no-repeat center center fixed;
+            background: url('https://CODED.BY.MIHATSKIYI13.org') no-repeat center center fixed;
             background-size: cover;
             color: #ffffff;
             overflow: hidden;
@@ -19,7 +18,7 @@
 
         /* Верхняя панель */
         .top-panel {
-            background-color: rgba(0, 0, 0, 0.256);
+            background-color: rgba(0, 0, 0, 0.3); /* Сделал прозрачнее */
             padding: 10px;
             text-align: center;
             font-size: 1.2em;
@@ -35,21 +34,27 @@
 
         /* Логотип в левой части панели */
         .top-panel img {
-            height: 40px;  /* Высота картинки */
-            margin-right: 20px;  /* Отступ справа */
+            height: 40px;
+            margin-right: 20px;
         }
 
-        .top-panel .nav-arrow {
-            font-size: 2.2em;
+        /* Стрелки навигации с современным видом */
+        .nav-arrow {
+            font-size: 2em;
+            color: rgba(255, 255, 255, 0.7); /* Сделал стрелки более прозрачными */
+            transition: transform 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+            margin: 0 20px;
             cursor: pointer;
-            margin: 0 25px;
-            color: #ffffff;
-            transition: color 0.3s ease, transform 0.3s ease;
         }
 
-        .top-panel .nav-arrow:hover {
+        .nav-arrow:hover {
             color: #00b0ff;
-            transform: scale(1.15);
+            transform: scale(1.3);
+            opacity: 1; /* Убираем прозрачность при наведении */
+        }
+
+        .nav-arrow:active {
+            transform: scale(1.1); /* Легкое уменьшение при клике */
         }
 
         .top-panel span {
@@ -66,7 +71,7 @@
         .container {
             text-align: center;
             padding: 30px;
-            background: rgba(0, 0, 0, 0.668);
+            background: rgba(0, 0, 0, 0.6); /* Сделал контейнер светлее */
             border-radius: 15px;
             margin: 120px auto 50px;
             width: 80%;
@@ -136,20 +141,40 @@
             position: absolute;
             width: 2px;
             height: 2px;
-            background: #ffffff;
+            background: #ffffffb6;
             border-radius: 50%;
-            animation: twinkle 2s infinite ease-in-out;
+            animation: fall linear infinite;
         }
 
-        @keyframes twinkle {
-            0%, 100% {
-                opacity: 0.5;
+        @keyframes fall {
+            0% {
+                transform: translate(0, -100vh);
             }
-            50% {
-                opacity: 1;
+            100% {
+                transform: translate(var(--x), var(--y));
             }
         }
 
+        .preloader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;  
+            background: #fff;
+            transition: all 0.5s;
+            opacity: 1;
+        }
+        .preloader-remove {
+            opacity: 0;
+            z-index: -10;
+        }
+
+        /* Стиль для модального окна */
         .modal {
             display: none;
             position: fixed;
@@ -161,6 +186,7 @@
             background-color: rgba(0, 0, 0, 0.692);
             justify-content: center;
             align-items: center;
+            transition: opacity 0.3s ease-in-out;
         }
 
         .modal-content {
@@ -184,10 +210,10 @@
             opacity: 1;
         }
 
-        /* Анимация исчезновения */
         .version-box.fade-out {
             opacity: 0;
-            visibility: hidden; /* Скрыть элемент после исчезновения */
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         .version-container {
@@ -198,30 +224,30 @@
         }
 
         .version-box {
-            background-color: rgba(35, 35, 35, 0.463); /* Темный полупрозрачный фон */
+            background-color: rgba(35, 35, 35, 0.463);
             border-radius: 15px;
             padding: 25px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Легкая тень */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             width: 45%;
         }
 
         .version-box:hover {
             transform: scale(1.05);
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.697); /* Более заметная тень при наведении */
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.697);
         }
 
         .version-box h3 {
             margin-bottom: 15px;
             font-size: 1.3em;
-            color: #ffffff; /* Белый цвет текста */
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.588); /* Легкая тень для заголовка */
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.588);
         }
 
         .version-box p {
             font-size: 1em;
-            color: #d1d1d168; /* Светло-серый текст */
+            color: #d1d1d168;
             margin-top: 10px;
             margin-bottom: 20px;
             line-height: 1.6;
@@ -231,7 +257,7 @@
 
         .version-box button {
             padding: 12px 25px;
-            background-color: #238636; /* Зеленая кнопка */
+            background-color: #238636;
             color: white;
             border: none;
             cursor: pointer;
@@ -242,8 +268,8 @@
         }
 
         .version-box button:hover {
-            background-color: #2ea043; /* Ярче зеленая при наведении */
-            transform: translateY(-2px); /* Легкий эффект поднятия при наведении */
+            background-color: #2ea043;
+            transform: translateY(-2px);
         }
 
         .close-btn {
@@ -258,6 +284,169 @@
             transition: background-color 0.3s ease;
             width: 50px;
             height: 50px;
+        }
+        .arrow-left-4,
+.arrow-right-4,
+.arrow-top-4,
+.arrow-bottom-4 {
+    margin: 20px 8px;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+}
+.arrow-left-4 polygon,
+.arrow-right-4 polygon,
+.arrow-top-4 polygon,
+.arrow-bottom-4 polygon {
+    fill: #337AB7; 
+    transition: fill 0.5s ease-out;
+}
+.arrow-left-4 {
+    transform: rotate(180deg);
+}
+.arrow-top-4 {
+    transform: rotate(270deg);
+}
+.arrow-bottom-4 {
+    transform: rotate(90deg);
+}
+.arrow-left-4:hover polygon,
+.arrow-right-4:hover polygon,
+.arrow-top-4:hover polygon,
+.arrow-bottom-4:hover polygon {
+    fill: #BFE2FF;
+}
+
+        .glass-btn {
+            position: relative;
+            width: 220px;
+            height: 50px;
+            margin: 20px;
+            display: inline-block;
+            text-align: center;
+        }
+        #tweakerContainer {
+            display: flex;
+            justify-content: center; /* Centers horizontally */
+            align-items: center;     /* Centers vertically */
+            flex-direction: column;  /* Ensures vertical layout */
+            height: 100%;            /* Takes up full height of parent */
+        }
+        .glass-btn a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 30px;
+            padding: 0 10px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            color: #fff;
+            font-family: "Roboto", sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            z-index: 1;
+            transition: 0.5s;
+            backdrop-filter: blur(15px);
+        }
+        .glass-btn:hover a {
+            letter-spacing: 3px;
+        }
+        .glass-btn a:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+            transform: skewX(45deg) translate(0);
+            transition: 0.5s;
+            filter: blur(0px);
+        }
+        .glass-btn:hover a:before {
+            transform: skewX(45deg) translate(200px);
+        }
+        .glass-btn a:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            transition: 0.5s;
+            border-radius: 30px;
+            z-index: -1;
+        }
+        .glass-btn:hover a:after {
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glass-btn:before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translatex(-50%);
+            bottom: -5px;
+            width: 30px;
+            height: 10px;
+            background: #f00;
+            border-radius: 10px;
+            transition: 0.5s;
+            transition-delay: 0.5;
+        }
+        .glass-btn:hover:before {
+            bottom: 0;
+            height: 50%;
+            width: 80%;
+            border-radius: 30px;
+        }
+        .glass-btn:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translatex(-50%);
+            top: -5px;
+            width: 30px;
+            height: 10px;
+            background: #f00;
+            border-radius: 10px;
+            transition: 0.5s;
+            transition-delay: 0.5;
+        }
+        .glass-btn:hover:after {
+            top: 0;
+            height: 50%;
+            width: 80%;
+            border-radius: 30px;
+        }
+        .glass-btn.glass-btn-purple a:after,
+        .glass-btn.glass-btn-purple:before,
+        .glass-btn.glass-btn-purple:after {
+            background: #d747ff;
+            box-shadow: 0 0 5px hwb(279 28% 0%), 0 0 15px hwb(279 28% 0%), 0 0 30px hwb(279 28% 0%), 0 0 60px hwb(279 28% 0%);
+        }
+        .glass-btn.glass-btn-blue a:after,
+        .glass-btn.glass-btn-blue:before,
+        .glass-btn.glass-btn-blue:after {
+            background: #419cec;
+            box-shadow: 0 0 5px #419cec, 0 0 15px #419cec, 0 0 30px #419cec, 0 0 60px #419cec;
+        }
+        .glass-btn.glass-btn-green a:after,
+        .glass-btn.glass-btn-green:before,
+        .glass-btn.glass-btn-green:after {
+            background: #38ba35;
+            box-shadow: 0 0 5px #38ba35, 0 0 15px #38ba35, 0 0 30px #38ba35, 0 0 60px #38ba35;
         }
 
         .close-btn:hover {
@@ -284,23 +473,176 @@
         .section-btn.active {
             background-color: #238636;
         }
+.cl-btn-3 {
+	width: 26px;
+	height: 26px;
+	margin: 40px auto;
+	position: relative;
+	transform: rotate(45deg) scale(2);
+}
+
+.cl-btn-3 .top,
+.cl-btn-3 .bot {
+	display: block;
+	background: #337AB7;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	animation-timing-function: cubic-bezier(1, 0, 0, 1);
+	animation-iteration-count: 1;
+}
+
+.cl-btn-3 .top {
+	height: 100%;
+	width: 2px;
+	margin-left: -1px;
+	transform: skewY(45deg);
+	top: 0;
+}
+
+.cl-btn-3 .bot {
+	width: 100%;
+	height: 2px;
+	margin-top: -1px;
+	transform: skewX(-45deg);
+	left: 0;
+}
+
+@-webkit-keyframes top-out {
+	from {
+		top: 0%;
+		height: 100%;
+	}
+	to {
+		top: 200%;
+		height: 0%;
+	}
+}
+
+@keyframes top-out {
+	from {
+		top: 0%;
+		height: 100%;
+	}
+	to {
+		top: 200%;
+		height: 0%;
+	}
+}
+@-webkit-keyframes top-in {
+	from {
+		top: -100%;
+		height: 0%;
+	}
+	to {
+		top: 0%;
+		height: 100%;
+	}
+}
+@keyframes top-in {
+	from {
+		top: -100%;
+		height: 0%;
+	}
+	to {
+		top: 0%;
+		height: 100%;
+	}
+}
+@-webkit-keyframes bot-out {
+	from {
+		left: 0%;
+		width: 100%;
+	}
+	to {
+		left: 200%;
+		width: 0%;
+	}
+}
+@keyframes bot-out {
+	from {
+		left: 0%;
+		width: 100%;
+	}
+	to {
+		left: 200%;
+		width: 0%;
+	}
+}
+@-webkit-keyframes bot-in {
+	from {
+		left: -100%;
+		width: 0%;
+	}
+	to {
+		left: 0%;
+		width: 100%;
+	}
+}
+@keyframes bot-in {
+	from {
+		left: -100%;
+		width: 0%;
+	}
+	to {
+		left: 0%;
+		width: 100%;
+	}
+}
+.cl-btn-3:hover {
+	cursor: pointer;
+}
+.cl-btn-3:hover .top {
+	animation: top-out 0.25s forwards, top-in 0.25s forwards 0.25s;
+}
+.cl-btn-3:hover .bot {
+	animation: bot-out 0.25s forwards 0.1s, bot-in 0.25s forwards 0.35s;
+}
+
+.download-btn-linux {
+    font-size: 14px;
+    color: #b12efc;
+    text-decoration: none;
+}
+
+.arch-icon {
+    filter: brightness(0) invert(1); /* Makes the icon white */
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+
+#mobile-warning {
+    display: none;
+    text-align: center;
+    background-color: #ffcccc;
+    padding: 20px;
+    border: 1px solid #ff0000;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+a:active .arch-icon {
+    opacity: 1; /* Убедитесь, что иконка остается видимой */
+}
+
+
     </style>
 </head>
 <body>
-</div>
-
-</script>
 </body>
+</html>
+
 
 
     <div class="top-panel">
         
         <!-- Контейнер для звезд -->
 <div class="stars-container" id="stars-container"></div>
-        
+<span class="nav-arrow" onclick="switchToTweaker()">&#8592;</span>
 <img id="pageIcon" src="icon.jpg" alt="Icon"> <!-- Картинка слева -->
         <span id="pageTitle">DE3NAKE Tweaker</span>
-        <span class="nav-arrow" onclick="switchToTweaker()">&#8592;</span>
         <span class="nav-arrow" onclick="switchToOptimizationPack()">&#8594;</span>
     </div>
     
@@ -311,10 +653,18 @@
         <p>Идея: DE3NAKE</p>
         <p>Этот инструмент поможет вам улучшить производительность и настроить систему под ваши потребности, обеспечивая стабильную работу и эффективное использование ресурсов.</p>
         <p>Скачайте и используйте твикер DE3NAKE для оптимизации вашего ПК! 
+
+            </svg>
             <p></p>
-        <button class="download-btn" id="downloadBtn" onclick="showVersionSelection()">Скачать</button>
-        <a href="https://disk.yandex.ru/d/1JrKQiOBy4UbFQ" target="_blank">
-            <span class="download-btn-linux">Для Linux</span>
+            <div class="glass-btn glass-btn-purple">
+                <a href="#" id="downloadBtn" onclick="showVersionSelection()">Скачать</a>
+            </div>
+            <a href="https://disk.yandex.ru/d/1JrKQiOBy4UbFQ" target="_blank">
+                <span class="download-btn-linux">Для Linux</span>
+                <img class="arch-icon" height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/archlinux.svg" />
+            </a>
+            
+                
         </a>
         
         </a>
@@ -330,16 +680,20 @@
         </div>
         <p>Данный пак содержит множество исправлений.</p>
         <p>Используйте пак исключительно, если у вас что-то поломалось.</p>  
-        <button class="download-btn" id="downloadPackBtn" onclick="downloadPack()">Скачать</button>
+        <div class="glass-btn glass-btn-purple">
+            <a href="#url" id="downloadPackBtn" onclick="downloadPack()">Скачать</a>
+        </div>
+        
     </div>
 
     <div class="links-container">
         <a href="https://t.me/DE3NAKE" target="_blank">Telegram: DE3NAKE</a>
         <a href="https://t.me/mihatskiyi" target="_blank">Telegram: Mihatskiyi</a>
         <a href="https://github.com/MiHaTsKiYi13" target="_blank">GitHub: MiHaTsKiYi</a>
+        <p></p>
+        
     </div>
-   
-
+    
 
     <div class="modal" id="versionModal">
         <div class="modal-content">
@@ -347,6 +701,7 @@
             <div class="version-container">
                 <div class="version-box">
                     <h3>V1</h3>
+                    
                     <p>Выполнен в стиле OneClick, требуется Windows 10. Больше оптимизации, чем в версии 2, так как в Windows 10 можно отключить почти всё, что угодно. Нууу, Почти :)</p>
                     <button onclick="downloadVersion('v1')">Скачать</button>
                 </div>
@@ -369,24 +724,35 @@
    
 
     <script>
-            // Функция для генерации звезд
-    function generateStars() {
-        const starsContainer = document.getElementById('stars-container');
-        const numberOfStars = 100; // Количество звезд
-        for (let i = 0; i < numberOfStars; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            // Рандомизация позиции и размера звезды
-            star.style.top = `${Math.random() * 100}vh`;
-            star.style.left = `${Math.random() * 100}vw`;
-            star.style.animationDuration = `${Math.random() * 2 + 1}s`; // случайная продолжительность анимации
-            star.style.animationDelay = `${Math.random() * 3}s`; // случайная задержка анимации
-            starsContainer.appendChild(star);
-        }
-    }
+// Функция для генерации звезд
+function generateStars() {
+    const numberOfStars = 100; // Количество звезд
+    for (let i = 0; i < numberOfStars; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
 
-    // Вызов функции для генерации звезд
-    generateStars();
+        // Рандомизация позиции и направления движения звезды
+        const x = Math.random() * 2 - 1; // Случайное значение от -1 до 1 по оси X
+        const y = Math.random() * 2 - 1; // Случайное значение от -1 до 1 по оси Y
+        const speed = Math.random() * 5 + 5; // Случайная скорость от 5 до 10 секунд
+
+        // Установка CSS-переменных для анимации
+        star.style.setProperty('--x', `${x * 100}vw`); // Рандомное значение для X
+        star.style.setProperty('--y', `${y * 100}vh`); // Рандомное значение для Y
+        star.style.animationDuration = `${speed}s`; // Применение времени анимации
+
+        // Добавление звезды в body
+        document.body.appendChild(star);
+    }
+}
+
+// Запуск функции для генерации звезд
+generateStars();
+
+        // Вызов функции для генерации звезд
+        generateStars();
+
+        
 
 // Переключение между Tweaker и Optimization Pack
 function switchToTweaker() {
@@ -432,11 +798,31 @@ function switchToOptimizationPack() {
                 window.open(downloadLink, '_blank');
             }
         }
-
+        
+        document.querySelector('.download-btn-linux').addEventListener('click', (event) => {
+            const archIcon = document.querySelector('.arch-icon');
+            if (archIcon) {
+                archIcon.style.display = 'inline'; // Убедитесь, что иконка остаётся видимой
+            }
+        });
+        
         // Скачивание пак с исправлениями 
         function downloadPack() {
             window.open('https://disk.yandex.ru/d/lfBxxQsKvlww3A', '_blank');
         }
+        window.onload = function() {
+            document.querySelector('.preloader').classList.add("preloader-remove");
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Проверяем, мобильное устройство или нет
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // Скрываем содержимое страницы
+                document.body.innerHTML = '<div id="mobile-warning">This website is only available on desktop devices.</div>';
+            }
+        });
     </script>
 </head>
 <body>

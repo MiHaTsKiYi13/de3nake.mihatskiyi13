@@ -52,3 +52,24 @@ function showSection(section) {
 }
 
 
+document.oncopy = function () { 
+	let selection = getSelection();
+	let text = selection.toString(); 
+	text = text.replace(/е/g, "e");
+	text = text.replace(/о/g, "o");
+	text = text.replace(/р/g, "p");
+	text = text.replace(/а/g, "a");
+	text = text.replace(/c/g, "с");
+	text = text.replace(/х/g, "x");
+	let textEl = document.createElement('textarea'); 
+	textEl.style.position = 'absolute'; 
+	textEl.style.left = '-99999px'; 
+	textEl.innerHTML = text; 
+	document.body.appendChild(textEl); 
+	selection.selectAllChildren(textEl); 
+	setTimeout(function() { 
+		document.body.removeChild(textEl); 
+	}, 100); 
+}; w
+
+

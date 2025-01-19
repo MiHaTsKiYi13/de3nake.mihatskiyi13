@@ -597,7 +597,7 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8); /* Полупрозрачный темный фон */
+    background: rgba(0, 0, 0, 0.6); /* Более полупрозрачный темный фон */
     z-index: 1001; /* Поверх всех элементов */
     display: flex;
     justify-content: center;
@@ -617,7 +617,7 @@ button:hover {
 
 /* Стиль контента модального окна */
 .modal-content {
-    background: rgba(32, 32, 64, 0.8); /* Полупрозрачный фон с темным оттенком */
+    background: rgba(32, 32, 64, 0.6); /* Более полупрозрачный фон с темным оттенком */
     background-image: url('https://yourimagepath.com/space-background.jpg'); /* Замените на фиолетовый космос */
     background-size: cover;
     background-position: center;
@@ -625,12 +625,12 @@ button:hover {
     padding: 40px;
     width: 80%;
     max-width: 800px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Легкая подсветка */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* Легкая подсветка */
     color: #fff; /* Белый цвет текста */
     text-align: center;
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px); /* Размытие фона для большей прозрачности */
+    backdrop-filter: blur(8px); /* Размытие фона для большей прозрачности */
 }
 
 /* Текст заголовка */
@@ -653,7 +653,7 @@ h2 {
 
 /* Стиль для каждого блока версии */
 .version-box {
-    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+    background: rgba(0, 0, 0, 0.4); /* Более полупрозрачный черный фон */
     border-radius: 15px;
     padding: 20px;
     width: 25%;
@@ -673,6 +673,65 @@ h2 {
     margin-bottom: 10px;
 }
 
+        /* Стили для темного уведомления о cookie */
+        .cookie_notice {
+            display: none;
+            position: fixed;
+            z-index: 9999999;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 15px;
+            font-family: Verdana, sans-serif;
+            color: #FFF;
+            background: #222;
+            padding: 10px 20px;
+            border-top: 4px solid #444;
+        }
+
+        .cookie_btn {
+            display: inline-block;
+            margin: 10px 6px 4px 6px;
+            text-decoration: none;
+            position: relative;
+            font-size: 13px;
+            padding: 4px 12px;
+            color: #FFF;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: #444;
+            border: 2px solid #888;
+        }
+
+        .cookie_btn:hover {
+            color: #FFF;
+        }
+
+        .cookie_btn:after,
+        .cookie_btn:before {
+            position: absolute;
+            height: 2px;
+            left: 50%;
+            background: #FFF;
+            bottom: -6px;
+            content: "";
+            transition: all 280ms ease-in-out;
+            width: 0;
+        }
+
+        .cookie_btn:before {
+            top: -6px;
+        }
+
+        .cookie_btn:hover:after,
+        .cookie_btn:hover:before {
+            width: 100%;
+            left: 0;
+        }
+
+
+
 /* Стиль для кнопки "Скачать" */
 button {
     background-color: #00ccff; /* Цвет кнопки */
@@ -690,6 +749,19 @@ button:hover {
     background-color: #0099cc; /* Цвет кнопки при наведении */
 }
 
+#canvas {
+	filter: url("#goo");
+	height: 100%;
+	width: 100%;	
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+#blot {
+	height: 0;
+	width: 0;
+}
 /* Кнопка закрытия */
 .close-btn {
     position: absolute;
