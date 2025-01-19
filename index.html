@@ -627,6 +627,10 @@ a:active .arch-icon {
     opacity: 1; /* Убедитесь, что иконка остается видимой */
 }
 
+.windows-icon {
+    filter: brightness(0) invert(1); /* Делаем иконку белой */
+}
+
 
     </style>
 </head>
@@ -654,11 +658,13 @@ a:active .arch-icon {
         <p>Этот инструмент поможет вам улучшить производительность и настроить систему под ваши потребности, обеспечивая стабильную работу и эффективное использование ресурсов.</p>
         <p>Скачайте и используйте твикер DE3NAKE для оптимизации вашего ПК! 
 
-            </svg>
-            <p></p>
             <div class="glass-btn glass-btn-purple">
-                <a href="#" id="downloadBtn" onclick="showVersionSelection()">Скачать</a>
-            </div>
+                <a href="#" id="downloadBtn-windows" onclick="showVersionSelection()">
+                    <img src="windows.svg" alt="Windows" style="width: 20px; height: 20px; margin-right: 8px; vertical-align: middle; filter: invert(1);">
+                    Скачать
+                </a>
+            
+        </div>
             <a href="https://disk.yandex.ru/d/1JrKQiOBy4UbFQ" target="_blank">
                 <span class="download-btn-linux">Для Linux</span>
                 <img class="arch-icon" height="16" width="16" src="https://unpkg.com/simple-icons@latest/icons/archlinux.svg" />
@@ -681,9 +687,11 @@ a:active .arch-icon {
         <p>Данный пак содержит множество исправлений.</p>
         <p>Используйте пак исключительно, если у вас что-то поломалось.</p>  
         <div class="glass-btn glass-btn-purple">
-            <a href="#url" id="downloadPackBtn" onclick="downloadPack()">Скачать</a>
+            <a href="#url" id="downloadPackBtn" onclick="downloadPack()">
+                <img src="windows.svg" alt="Windows" style="width: 20px; height: 20px; margin-right: 8px; vertical-align: middle; filter: brightness(0) invert(1);">
+                Скачать
+            </a>
         </div>
-        
     </div>
 
     <div class="links-container">
