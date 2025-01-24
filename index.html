@@ -38,24 +38,29 @@
             margin-right: 20px;
         }
 
-        /* Стрелки навигации с современным видом */
-        .nav-arrow {
-            font-size: 2em;
-            color: rgba(255, 255, 255, 0.7); /* Сделал стрелки более прозрачными */
-            transition: transform 0.3s ease, color 0.3s ease, opacity 0.3s ease;
-            margin: 0 20px;
-            cursor: pointer;
-        }
+/* Стрелки навигации с современным видом */
+.nav-arrow {
+    font-size: 2em;
+    color: rgba(255, 255, 255, 0.7); /* Сделал стрелки более прозрачными */
+    transition: transform 0.3s ease, color 0.3s ease, opacity 0.3s ease, filter 0.2s ease; /* Добавлен эффект фильтра */
+    margin: 0 20px;
+    cursor: pointer;
+}
 
-        .nav-arrow:hover {
-            color: #00b0ff;
-            transform: scale(1.3);
-            opacity: 1; /* Убираем прозрачность при наведении */
-        }
+/* Эффект наведения: яркая и плавная анимация */
+.nav-arrow:hover {
+    color: #00b0ff;
+    transform: translateX(-5px) scale(1.3); /* Плавное смещение и увеличение */
+    opacity: 1; /* Убираем прозрачность при наведении */
+    filter: drop-shadow(0 0 10px rgba(0, 176, 255, 0.6)); /* Светящийся эффект */
+}
 
-        .nav-arrow:active {
-            transform: scale(1.05); /* Легкое уменьшение при клике */
-        }
+/* Эффект при клике: легкое уменьшение с пульсацией */
+.nav-arrow:active {
+    transform: scale(1.1) translateX(-2px); /* Легкое уменьшение и смещение */
+    filter: none; /* Убираем светящийся эффект при клике */
+}
+
 
         .top-panel span {
             font-weight: bold;
@@ -630,6 +635,7 @@ a:active .arch-icon {
 
 
 
+
     </style>
 </head>
 <body>
@@ -647,7 +653,7 @@ a:active .arch-icon {
         <span id="pageTitle">DE3NAKE Tweaker</span>
     </div>
 
-    <span class="nav-arrow" onclick="window.location.href='https://mihatskiyi13.github.io/de3nake.mihatskiyi13.v2/'">&#8594;</span>
+    <span class="nav-arrow" onclick="window.location.href='https://mihatskiyi13.github.io/de3nake.mihatskiyi13.v3/'">&#8594;</span>
 </div>
 
 <div class="container" id="tweakerContainer">
